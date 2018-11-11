@@ -2606,7 +2606,6 @@
             title: 'Click to zoom'
         });
 
-
         var ConchaliMarker = new google.maps.Marker({
             position: {lng:-70.67422, lat: -33.38631},
             map: map,
@@ -2739,13 +2738,13 @@
             title: 'Click to zoom'
         });
 
-        var QulicuraMarker = new google.maps.Marker({
+        var QuilicuraMarker = new google.maps.Marker({
             position: {lng: -70.75407, lat: -33.35031},
             map: map,
             title: 'Click to zoom'
         });
 
-        var QuintaNornalMarker = new google.maps.Marker({
+        var QuintaNormalMarker = new google.maps.Marker({
             position: {lng:-70.6971, lat: -33.42991},
             map: map,
             title: 'Click to zoom'
@@ -2793,19 +2792,197 @@
             title: 'Click to zoom'
         });
 
+        var LaPintanaMarker = new google.maps.Marker({
+            position: {lng: -70.6383, lat: -33.5836},
+            map: map,
+            title: 'Click to zoom'
+        });
 
-        //On click zoom Comuna
-        map.addListener('center_changed', function() {
-            // 3 seconds after the center of the map has changed, pan back to the
-            // marker.
-            window.setTimeout(function() {
-                map.panTo(SantiagoMarker.getPosition());
-            }, 3000);
+        var RecoletaMarker = new google.maps.Marker({
+            position: {lng: -70.64278, lat: -33.40445},
+            map: map,
+            title: 'Click to zoom'
+        });
+
+        //On click zoom on Comuna
+        CerrillosMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(CerrillosMarker.getPosition());
+        });
+
+        CerroNaviaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(CerroNaviaMarker.getPosition());
+        });
+
+        ConchaliMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(ConchaliMarker.getPosition());
+        });
+
+        ElBosqueMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(ElBosqueMarker.getPosition());
+        });
+
+        EstacionCentralMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(EstacionCentralMarker.getPosition());
+        });
+
+        HuechurabaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(HuechurabaMarker.getPosition());
+        });
+
+        IndependenciaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(IndependenciaMarker.getPosition());
+        })
+
+        LaCisternaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LaCisternaMarker.getPosition());
+        });
+
+        LaFloridaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LaFloridaMarker.getPosition());
+        });
+
+        LaGranjaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LaGranjaMarker.getPosition());
+        });
+
+        LaPintanaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LaPintanaMarker.getPosition());
+        });
+
+        LaReinaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LaReinaMarker.getPosition());
+        });
+
+        LasCondesMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LasCondesMarker.getPosition());
+        });
+
+        LoBarnecheaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LoBarnecheaMarker.getPosition());
+        });
+
+        LoEspejoMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LoEspejoMarker.getPosition());
+        });
+
+        LoPradoMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(LoPradoMarker.getPosition());
+        });
+
+        MaculMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(MaculMarker.getPosition());
+        });
+
+        MaipuMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(MaipuMarker.getPosition());
+        });
+
+        NunoaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(NunoaMarker.getPosition());
+        });
+
+        PAguirreCerdaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(PAguirreCerdaMarker.getPosition());
+        });
+
+        PenalolenMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(PenalolenMarker.getPosition());
+        });
+
+        PirqueMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(PirqueMarker.getPosition());
+        });
+
+        ProvidenciaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(ProvidenciaMarker.getPosition());
+        });
+
+        PudahuelMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(PudahuelMarker.getPosition());
+        });
+
+        PuenteAltoMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(PuenteAltoMarker.getPosition());
+        });
+
+        QuilicuraMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(QuilicuraMarker.getPosition());
+        });
+
+        QuintaNormalMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(QuintaNormalMarker.getPosition());
+        });
+
+        RecoletaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(RecoletaMarker.getPosition());
+        });
+
+        RencaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(RencaMarker.getPosition());
+        });
+
+        SanBernardoMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(SanBernardoMarker.getPosition());
+        });
+
+        SanJoaquinMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(SanJoaquinMarker.getPosition());
+        });
+
+        SanMiguelMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(SanMiguelMarker.getPosition());
+        });
+
+        SanRamonMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(SanRamonMarker.getPosition());
         });
 
         SantiagoMarker.addListener('click', function() {
             map.setZoom(15);
             map.setCenter(SantiagoMarker.getPosition());
+        });
+
+        VitacuraMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(VitacuraMarker.getPosition());
+        });
+
+        RecoletaMarker.addListener('click', function() {
+            map.setZoom(15);
+            map.setCenter(RecoletaMarker.getPosition());
         });
     }
 </script>
