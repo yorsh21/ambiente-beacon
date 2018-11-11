@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container text-center">
+        <div class="row">
+            <div class="col">
+                <h1>Proyecto Beacon</h1>
+                <br><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <br><br>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Fecha</label>
+                    <input id="fecha" type="text" name="fecha_medicion" value="13-05-2017">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Variable eje X</label>
+                    <select id="eje_x" name="rango_select" onchange="">
+                        <option value="Hora">Hora</option>
+                        <option value="Fecha">Fecha</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Variable eje Y</label>
+                    <select id="eje_y" name="rango_select" onchange="">
+                        <option value="Temperatura Exterior">Temp Ext</option>
+                        <option value="Temperatura Interior">Temp Int</option>
+                        <option value="Humedad Exterior">Hum Ext</option>
+                        <option value="Humedad Interior">Hum Int</option>
+                        <option value="Co2">Co2</option>
+                        <option value="Ruido">Ruido</option>
+                        <option value="Pm10">Pm10</option>
+                        <option value="Pm25">Pm25</option>
+                        <option value="Potencia">Potencia</option>
+                        <option value="Energia">Energia</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Sensores a mostrar</label>
+                    <select id="sensores" name="rango_select" onchange="">
+                        <option value="11">11</option>
+                        <option value="17">17</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                        <option value="27">27</option>
+                        <option value="28">28</option>
+                        <option value="31">31</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button onclick="myFunction()">Generar</button>
+                </div>
+            </div>
+            <div class="col-8">
+                <div id="chartContainer"></div>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="/lib/d3.v4.3.0.js"></script>
+    <script src="/dist/dimple.v2.3.0.js"></script>
+    <script type="text/javascript">
+        function myFunction() {
+            //Get data from html
+            var fecha = document.getElementById("fecha").value;
+            var eje_x = document.getElementById("eje_x").value;
+            var eje_y = document.getElementById("eje_y").value;
+            var sensores = document.getElementById("sensores").value;
+
+            var svg = dimple.newSvg("#chartContainer", 590, 450);
+            d3.csv("/data/test.csv", function (data) {
+              data = dimple.filterData(data, "Vivienda ID", [sensores]);
+
+              // Formatting Data
+              data.forEach(function(d) {
+                  d["Vivienda ID"] = parseInt(d["Vivienda ID"]);
+                  d["Temperatura Interior"] = parseInt(d["Humedad Interior"]) - 60;
+                  d["Temperatura Exterior"] = parseInt(d["Humedad Exterior"]) - 60;
+                  d["Humedad Interior"] = parseInt(d["Humedad Interior"]);
+                  d["Humedad Exterior"] = parseInt(d["Humedad Exterior"]);
+                  d["Co2"] = parseFloat(d["Co2"]);
+                  d["Ruido"] = parseFloat(d["Ruido"]);
+                  d["Pm10"] = parseFloat(d["Pm10"]);
+                  d["Pm25"] = parseFloat(d["Pm25"]);
+                  d["Potencia"] = parseFloat(d["Potencia"]);
+                  d["Energia"] = parseFloat(d["Energia"]);
+
+                  var  splitted_date = d["Measured At"].split(" ");
+                  var fecha = splitted_date[0];
+                  var hora = splitted_date[1];
+                  d["Fecha"] = fecha;
+                  d["Hora"] = hora;
+                  delete d["Measured At"];
+              });
+
+              //Plotting
+              data = dimple.filterData(data, "Fecha", [fecha]);
+              var myChart = new dimple.chart(svg, data);
+              myChart.setBounds(60, 30, 505, 305);
+              var x = myChart.addCategoryAxis("x", eje_x);
+              x.addOrderRule("Hora");
+              var y1 = myChart.addMeasureAxis("y", eje_y);
+              var temp_ext = myChart.addSeries("Vivienda ID", dimple.plot.line);
+              myChart.addLegend(60, 10, 500, 20, "right", [temp_ext]);
+              myChart.draw();
+            });
+        }
+    </script>
+</body>
+</html>

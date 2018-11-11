@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Proyecto Beacon</title>
+    
+    <link rel="icon" href="dist/img/favicon.ico" type="image/gif" sizes="16x16">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/datepicker/gijgo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Navegación</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Proyecto Beacon v1.0</a>
+            </div>
+
+            <ul id="nav-sensors" class="nav navbar-top-links navbar-right"><img src="dist/img/sensores.png" alt=""></ul>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Buscar...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gráficos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li><a href="#">Barras</a></li>
+                                <li><a href="#">Circular</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fa fa-table fa-fw"></i> Tablas</a></li>
+                        <li><a href="#"><i class="fa fa-edit fa-fw"></i> Formularios</a></li>
+                        <li><a href="#"><i class="fa fa-wrench fa-fw"></i> Elementos de Interfaz<span class="fa arrow"></span></a> 
+                            <ul class="nav nav-second-level">
+                                <li><a href="panels-#">Paneles</a></li>
+                                <li><a href="#">Botones</a></li>
+                                <li><a href="#">Notificaciones</a></li>
+                                <li><a href="#">Tipografia</a></li>
+                                <li><a href="#"> Iconos</a></li>
+                                <li><a href="#">Grilla</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Inicio</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-sitemap fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">3</div>
+                                    <div>Vistas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-tasks fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">12</div>
+                                    <div>Tareas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-desktop fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">124</div>
+                                    <div>Esquemas</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-support fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div class="huge">13</div>
+                                    <div>Ayuda</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Detalles</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Panel de Control
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="fecha">Fecha</label>
+                                <input id="fecha" class="form-control" name="fecha" value="13-05-2017">
+                            </div>
+                            <div class="form-group">
+                                <label for="eje_x">Variable eje X</label>
+                                <select id="eje_x" class="form-control" name="eje_x" onchange="">
+                                    <option value="Hora">Hora</option>
+                                    <option value="Fecha">Fecha</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="eje_y">Variable eje Y</label>
+                                <select id="eje_y" class="form-control" name="eje_y" onchange="">
+                                    <option value="Temperatura Exterior">Temperatura Exterior</option>
+                                    <option value="Temperatura Interior">Temperatura Interior</option>
+                                    <option value="Humedad Exterior">Humedad Exterior</option>
+                                    <option value="Humedad Interior">Humedad Interior</option>
+                                    <option value="Co2">Co2</option>
+                                    <option value="Ruido">Ruido</option>
+                                    <option value="Pm10">Pm10</option>
+                                    <option value="Pm25">Pm25</option>
+                                    <option value="Potencia">Potencia</option>
+                                    <option value="Energia">Energia</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="sensores">Sensores a mostrar</label>
+                                <select id="sensores" class="form-control" name="sensores" onchange="">
+                                    <option value="11">11</option>
+                                    <option value="17">17</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="31">31</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-default btn-block" onclick="myFunction()">Generar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Gráfico de Sensores
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Acciones
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Descargar</a>
+                                        </li>
+                                        <li><a href="#">Exportar</a>
+                                        </li>
+                                        <li><a href="#">Limpiar Gráfico</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Detalles</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div id="chartContainer"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="vendor/raphael/raphael.min.js"></script>
+    <script src="vendor/morrisjs/morris.min.js"></script>
+    <script src="vendor/datepicker/gijgo.min.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
+
+    <!-- Custom Dimple JavaScript -->
+    <script src="lib/d3.v4.3.0.js"></script>
+    <script src="dist/dimple.v2.3.0.js"></script>
+    <script type="text/javascript">
+        $('#fecha').datepicker({
+            uiLibrary: 'bootstrap4',
+            format: 'dd-mm-yyyy'
+        });
+
+        function myFunction() {
+            $("#chartContainer").html("");
+            //Get data from html
+            var fecha = document.getElementById("fecha").value;
+            var eje_x = document.getElementById("eje_x").value;
+            var eje_y = document.getElementById("eje_y").value;
+            var sensores = document.getElementById("sensores").value;
+
+            var svg = dimple.newSvg("#chartContainer", 590, 450);
+            d3.csv("/data/test.csv", function (data) {
+              data = dimple.filterData(data, "Vivienda ID", [sensores]);
+
+              // Formatting Data
+              data.forEach(function(d) {
+                  d["Vivienda ID"] = parseInt(d["Vivienda ID"]);
+                  d["Temperatura Interior"] = parseInt(d["Humedad Interior"]) - 60;
+                  d["Temperatura Exterior"] = parseInt(d["Humedad Exterior"]) - 60;
+                  d["Humedad Interior"] = parseInt(d["Humedad Interior"]);
+                  d["Humedad Exterior"] = parseInt(d["Humedad Exterior"]);
+                  d["Co2"] = parseFloat(d["Co2"]);
+                  d["Ruido"] = parseFloat(d["Ruido"]);
+                  d["Pm10"] = parseFloat(d["Pm10"]);
+                  d["Pm25"] = parseFloat(d["Pm25"]);
+                  d["Potencia"] = parseFloat(d["Potencia"]);
+                  d["Energia"] = parseFloat(d["Energia"]);
+
+                  var  splitted_date = d["Measured At"].split(" ");
+                  var fecha = splitted_date[0];
+                  var hora = splitted_date[1];
+                  d["Fecha"] = fecha;
+                  d["Hora"] = hora;
+                  delete d["Measured At"];
+              });
+
+              //Plotting
+              data = dimple.filterData(data, "Fecha", [fecha]);
+              var myChart = new dimple.chart(svg, data);
+              myChart.setBounds(60, 30, 505, 305);
+              var x = myChart.addCategoryAxis("x", eje_x);
+              x.addOrderRule("Hora");
+              var y1 = myChart.addMeasureAxis("y", eje_y);
+              var temp_ext = myChart.addSeries("Vivienda ID", dimple.plot.line);
+              myChart.addLegend(60, 10, 500, 20, "right", [temp_ext]);
+              myChart.draw();
+            });
+        }
+    </script>
+</body>
+
+</html>
