@@ -2686,8 +2686,6 @@ function selectCommune(obj) {
     if(id != "") {
         map.setZoom(14);
         map.setCenter(markers[id].getPosition());
-        console.log(id)
-        console.log(communes[id])
     }
 }
 
@@ -2735,6 +2733,14 @@ let variableColor = [
     'blue',
     'black',
     'red'
+];
+
+let variableColorCode = [
+    'rgba(0,0,0,',
+    'rgba(0,128,0,',
+    'rgba(0,0,255,',
+    'rgba(0,0,0,',
+    'rgba(255,0,0,'
 ];
 
 let communeData = [
@@ -2931,13 +2937,22 @@ $('input[name="mapVariable"]').change(function(opt){
 
 function fillPolygonColor(val) {
     if(val == 0) {
+        $("#scale").css("display", "none");
         for (let i = 0; i < markers.length; i++) {
             polygons[i].setOptions({fillColor: communeColors[i], strokeColor: communeColors[i], fillOpacity: 0.2});
         }
-    }else{
+    } else{
         
         for (let i = 0; i < markers.length; i++) {
             polygons[i].setOptions({fillColor: variableColor[val], strokeColor: variableColor[val], fillOpacity: communeData[val][i]});
         }
+
+        let contador = 0;
+        let communeSort = communeData[val].sort();
+        $("#scale > ul > li").each(function() {
+            $("#scale").css("display", "block");
+            $(this).css("background-color", variableColorCode[val] + communeData[val][contador].toString() + ")");
+            contador += 3
+        })
     }
 }

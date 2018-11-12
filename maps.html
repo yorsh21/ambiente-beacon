@@ -92,7 +92,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>Filtros del Mapa</label>
+                                        <label>Elementos del Mapa</label>
                                         <div class="checkbox">
                                             <label>
                                                 <input type="checkbox" onclick="toogleMarkers(this);" value="1" checked="">Mostrar Marcadores
@@ -151,27 +151,25 @@
                                         <button type="button" class="btn btn-primary" onclick="viewCity();">Vista Ciudad</button>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-3 col-md-offset-1">
                                     <div class="form-group">
-                                        <label>Por variable</label>
+                                        <label>Filtro por Sensor</label>
+                                        <label class="radio">
+                                            <input type="radio" name="mapVariable" id="inlineRadio0" value="0" checked> Ninguno
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="mapVariable" id="inlineRadio1" value="1"> Temperatura
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="mapVariable" id="inlineRadio2" value="2"> Humedad
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="mapVariable" id="inlineRadio3" value="3"> CO2
+                                        </label>
+                                        <label class="radio">
+                                            <input type="radio" name="mapVariable" id="inlineRadio4" value="4"> Ruido
+                                        </label>
                                     </div>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="mapVariable" id="inlineRadio0" value="0" checked> Ninguno
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="mapVariable" id="inlineRadio1" value="1"> Temperatura
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="mapVariable" id="inlineRadio2" value="2"> Humedad
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="mapVariable" id="inlineRadio3" value="3"> CO2
-                                    </label>
-                                    <label class="radio-inline">
-                                        <input type="radio" name="mapVariable" id="inlineRadio4" value="4"> Ruido
-                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -181,6 +179,22 @@
                     <div class="panel panel-default">
                         <div id="map-container" class="panel-body">
                             <div id="map"></div>
+                            <div id="scale">
+                                <ul>
+                                    <li id="scale-1"><span>1º</span></li>
+                                    <li id="scale-2"><span>3º</span></li>
+                                    <li id="scale-3"><span>6º</span></li>
+                                    <li id="scale-4"><span>8º</span></li>
+                                    <li id="scale-5"><span>12º</span></li>
+                                    <li id="scale-6"><span>18º</span></li>
+                                    <li id="scale-7"><span>21º</span></li>
+                                    <li id="scale-8"><span>24º</span></li>
+                                    <li id="scale-9"><span>28º</span></li>
+                                    <li id="scale-10"><span>32º</span></li>
+                                    <li id="scale-11"><span>34º</span></li>
+                                    <li id="scale-12"><span>36º</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
