@@ -28,8 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <img id="img-title" src="dist/img/circulos.png" alt="">
-                <a class="navbar-brand" href="index.html">Proyecto Beacon v1.0</a>
+                <a class="navbar-brand" href="index.html"><img src="dist/img/circulos.png" alt=""><span>Proyecto Beacon v1.0</span></a>
             </div>
 
             <ul id="nav-sensors" class="nav navbar-top-links navbar-right"><img src="dist/img/sensores.png" alt=""></ul>
@@ -109,7 +108,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Ver Comuna</label>
-                                        <select class="form-control" onclick="selectCommune(this);">
+                                        <select class="form-control" onchange="selectCommune(this);">
                                             <option value="">- Selecciona -</option>
                                             <option value="0">Cerrillos</option>
                                             <option value="1">Cerro Navia</option>
@@ -147,6 +146,9 @@
                                             <option value="33">Santiago</option>
                                             <option value="34">Vitacura</option>
                                         </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" onclick="viewCity();">Vista Ciudad</button>
                                     </div>
                                 </div>
                             </div>

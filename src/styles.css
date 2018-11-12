@@ -1,5 +1,19 @@
 /*Página de Inicio*/
 
+.navbar-brand {
+    padding-top: 6px;
+}
+
+.navbar-brand span {
+    display: inline-block;
+}
+
+.navbar-brand img {
+    width: 40px;
+    padding-right: 4px;
+    display: inline-block;
+}
+
 #fecha {
     width: 83%;
     border-top-right-radius: 0px;
@@ -23,10 +37,6 @@
     margin-top: 4px;
     margin-right: 10px;
     width: 300px;
-}
-
-#img-title {
-    width: 40px;
 }
 
 

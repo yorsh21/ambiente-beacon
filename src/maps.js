@@ -2676,13 +2676,14 @@ function tooglePolygons(obj) {
     }
 }
 
+function viewCity() {
+    map.setZoom(11);
+    map.setCenter(defaultLocate);
+}
+
 function selectCommune(obj) {
     let id = obj.options[obj.selectedIndex].value;
-    if(id == "") {
-        map.setZoom(11);
-        map.setCenter(defaultLocate);
-    }
-    else {
+    if(id != "") {
         map.setZoom(14);
         map.setCenter(markers[id].getPosition());
         console.log(id)
