@@ -2687,32 +2687,3 @@ ul.gj-list-md li.disabled > [data-role="wrapper"] > [data-role="expander"] {
     top: 0px;
     font-size: 24px;
 }
-
-
-
-/*Extra Code*/
-
-#fecha {
-    width: 83%;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-
-.input-group-append button {
-    width: 20px;
-    height: 34px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    padding-bottom: 10px;
-}
-
-.input-group-append .gj-icon {
-    top: 6px !important;
-    left: 8px !important;
-}
-
-#nav-sensors img {
-    margin-top: 4px;
-    margin-right: 10px;
-    width: 300px;
-}

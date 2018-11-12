@@ -1,6 +1,6 @@
 Para ejecutar lo que hice levantar un server http:
 
-python -m http-server 8000
+python -m http.server 8000
 
 Desde el navegador ir a:
 

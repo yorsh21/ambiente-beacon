@@ -15,7 +15,8 @@
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="vendor/datepicker/gijgo.css" rel="stylesheet" type="text/css">
+    <link href="vendor/datepicker/gijgo.min.css" rel="stylesheet" type="text/css">
+    <link href="src/styles.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div id="wrapper">
@@ -27,6 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <img id="img-title" src="dist/img/circulos.png" alt="">
                 <a class="navbar-brand" href="index.html">Proyecto Beacon v1.0</a>
             </div>
 
@@ -46,26 +48,10 @@
                             </div>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                            <a href="http://localhost:8000/index.html"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Gráficos<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="#">Barras</a></li>
-                                <li><a href="#">Circular</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#"><i class="fa fa-table fa-fw"></i> Tablas</a></li>
-                        <li><a href="#"><i class="fa fa-edit fa-fw"></i> Formularios</a></li>
-                        <li><a href="#"><i class="fa fa-wrench fa-fw"></i> Elementos de Interfaz<span class="fa arrow"></span></a> 
-                            <ul class="nav nav-second-level">
-                                <li><a href="panels-#">Paneles</a></li>
-                                <li><a href="#">Botones</a></li>
-                                <li><a href="#">Notificaciones</a></li>
-                                <li><a href="#">Tipografia</a></li>
-                                <li><a href="#"> Iconos</a></li>
-                                <li><a href="#">Grilla</a></li>
-                            </ul>
+                            <a href="http://localhost:8000/maps.html"><i class="fa fa-map fa-fw"></i> Mapa</a>
                         </li>
                     </ul>
                 </div>
@@ -79,98 +65,6 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-sitemap fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">3</div>
-                                    <div>Vistas</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>Tareas</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-desktop fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>Esquemas</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>Ayuda</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">Ver Detalles</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
             <div class="row">
                 <div class="col-lg-4">
                     <div class="panel panel-default">

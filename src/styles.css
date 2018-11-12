@@ -1,0 +1,43 @@
+/*Página de Inicio*/
+
+#fecha {
+    width: 83%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.input-group-append button {
+    width: 20px;
+    height: 34px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding-bottom: 10px;
+}
+
+.input-group-append .gj-icon {
+    top: 6px !important;
+    left: 8px !important;
+}
+
+#nav-sensors img {
+    margin-top: 4px;
+    margin-right: 10px;
+    width: 300px;
+}
+
+#img-title {
+    width: 40px;
+}
+
+
+/*Página de Mapa*/
+
+#map-container {
+    height: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 100%;
+}

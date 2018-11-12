@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Proyecto Beacon</title>
+    
+    <link rel="icon" href="dist/img/favicon.ico" type="image/gif" sizes="16x16">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
+    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/datepicker/gijgo.min.css" rel="stylesheet" type="text/css">
+    <link href="src/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Navegación</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img id="img-title" src="dist/img/circulos.png" alt="">
+                <a class="navbar-brand" href="index.html">Proyecto Beacon v1.0</a>
+            </div>
+
+            <ul id="nav-sensors" class="nav navbar-top-links navbar-right"><img src="dist/img/sensores.png" alt=""></ul>
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Buscar...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8000/index.html"><i class="fa fa-dashboard fa-fw"></i> Inicio</a>
+                        </li>
+                        <li>
+                            <a href="http://localhost:8000/maps.html"><i class="fa fa-map fa-fw"></i> Mapa</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Mapa</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Panel de Control
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        Acciones
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="#">Descargar</a>
+                                        </li>
+                                        <li><a href="#">Exportar</a>
+                                        </li>
+                                        <li><a href="#">Limpiar Gráfico</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li><a href="#">Detalles</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Filtros del Mapa</label>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" onclick="toogleMarkers(this);" value="1" checked="">Mostrar Marcadores
+                                            </label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" onclick="tooglePolygons(this);" value="1" checked="">Mostrar Marcadores
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Ver Comuna</label>
+                                        <select class="form-control" onclick="selectCommune(this);">
+                                            <option value="">- Selecciona -</option>
+                                            <option value="0">Cerrillos</option>
+                                            <option value="1">Cerro Navia</option>
+                                            <option value="2">Conchali</option>
+                                            <option value="3">El Bosque</option>
+                                            <option value="4">Estacion Central</option>
+                                            <option value="5">Huechuraba</option>
+                                            <option value="6">Independencia</option>
+                                            <option value="7">La Cisterna</option>
+                                            <option value="8">La Florida</option>
+                                            <option value="9">La Granja</option>
+                                            <option value="10">La Pintana</option>
+                                            <option value="11">La Reina</option>
+                                            <option value="12">Las Condes</option>
+                                            <option value="13">Lo Barnechea</option>
+                                            <option value="14">Lo Espejo</option>
+                                            <option value="15">Lo Prado</option>
+                                            <option value="16">Macul</option>
+                                            <option value="17">Maipu</option>
+                                            <option value="18">Nunoa</option>
+                                            <option value="19">Pedro Aguirre Cerda</option>
+                                            <option value="20">Penalolen</option>
+                                            <option value="21">Pirque</option>
+                                            <option value="22">Providencia</option>
+                                            <option value="23">Pudahuel</option>
+                                            <option value="24">Puente Alto</option>
+                                            <option value="25">Quilicura</option>
+                                            <option value="26">Quinta Normal</option>
+                                            <option value="27">Recoleta</option>
+                                            <option value="28">Renca</option>
+                                            <option value="29">San Bernardo</option>
+                                            <option value="30">San Joaquin</option>
+                                            <option value="31">San Miguel</option>
+                                            <option value="32">San Ramon</option>
+                                            <option value="33">Santiago</option>
+                                            <option value="34">Vitacura</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div id="map-container" class="panel-body">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/metisMenu/metisMenu.min.js"></script>
+    <script src="vendor/raphael/raphael.min.js"></script>
+    <script src="vendor/morrisjs/morris.min.js"></script>
+    <script src="vendor/datepicker/gijgo.min.js"></script>
+    <script src="dist/js/sb-admin-2.js"></script>
+
+    <!-- Custom Dimple JavaScript -->
+    <script src="lib/d3.v4.3.0.js"></script>
+    <script src="dist/dimple.v2.3.0.js"></script>
+    <script src="src/maps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxbiM6_Kt4l-yrtbR0--I04LqZS-ARhL8&callback=initMap" async defer></script>
+</body>
+
+</html>
