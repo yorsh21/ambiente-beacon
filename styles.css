@@ -1,0 +1,71 @@
+/*Inicio*/
+
+body {
+    background-color: #f6f6f6;
+}
+
+.navbar-brand {
+    padding-top: 6px;
+}
+
+.navbar-brand span {
+    display: inline-block;
+}
+
+.navbar-brand img {
+    width: 40px;
+    padding-right: 4px;
+    display: inline-block;
+}
+
+#nav-sensors img {
+    margin-top: 4px;
+    margin-right: 10px;
+    max-height: 50px;
+}
+
+.input-group-append .gj-icon {
+    top: 5px !important;
+    left: 8px !important;
+}
+
+
+/*Mapa*/
+
+#map-container {
+    height: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 100%;
+}
+
+
+/*Estala del Mapa*/
+#map-container {
+    position: relative;
+}
+
+#scale {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 240px;
+    background-color: white;
+    display: none;
+}
+
+#scale > ul {
+    padding: 0;
+}
+
+#scale > ul > li {
+    list-style: none;
+}
+
+#scale > ul > li > span {
+    font-weight: bold;
+}
