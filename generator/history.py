@@ -8,6 +8,15 @@ for sensor in sensors:
     for d in range(288):
         temp = random.randint(5,32)
         humd = random.randint(20,80)
+
+        hour = str(int(d*24/288))
+        if len(hour) == 1:
+            hour = "0" + hour;
+
+        minute = str((d*5)%60)
+        if len(minute) == 1:
+            minute = "0" + minute;
+
         sensor["data"].append({
             "Tint": temp,
             "Text": temp - random.randint(0,7),
@@ -19,7 +28,7 @@ for sensor in sensors:
             "Pm25": random.randint(0,25),
             "Powr": random.randint(100,500),
             "Egy": random.randint(100,1000),
-            "date": "13-05-2017 " + str(int(d*24/288)) + ":" + str((d*5)%60)
+            "date": "13-05-2017 " + hour + ":" + minute
         })
     print(sensor["id"])
     

@@ -2570,13 +2570,13 @@ let dateNow = today.getDate().toString() + "/" + (today.getMonth()+1).toString()
 
 let contentString = `
       <div id="content>
-            <div id="siteNotice></div>
-            <h2 id="firstHeading" class="firstHeading">Sensor {0}</h2>
-            <div id="bodyContent">
-                <p><b>Estado:</b> {1}</p>
+            <div class="siteNotice></div>
+            <h2 class="firstHeading">Sensor {0}</h2>
+            <div class="bodyContent">
                 <p><b>Latitud:</b> {2}</p>
                 <p><b>Longitud:</b> {3}</p>
                 <p><b>Última Medición:</b> {4}</p>
+                <a class="btn btn-primary" onclick="clickDetails(this)" href="#" data-id="{1}">Detalles</a>
             </div>
       </div>
 `;
@@ -2625,7 +2625,10 @@ function initMap() {
         });
 
         let infowindow = new google.maps.InfoWindow({
-            content: contentString.format(sensors[i].id, "Habilitado", sensors[i].lat, sensors[i].lng, dateNow)
+            content: contentString.format(sensors[i].id, sensors[i].id, sensors[i].lat, sensors[i].lng, function() {
+                let len = sensors[i].data.length;
+                return sensors[i].data[len-1].date.split(" ")[0];
+            })
         });
 
         tempMarker.addListener('click', function() {

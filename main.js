@@ -3,6 +3,33 @@ $('#fecha').datepicker({
     format: 'dd-mm-yyyy'
 });
 
+function clickDetails(obj) {
+    let id = obj.getAttribute("data-id");
+    let sensor = sensors[id];
+    //gm-ui-hover-effect
+
+    let parent = obj.closest(".gm-style-iw").nextSibling.click();
+
+    let data = [];
+    sensor.data.forEach(element => {
+        data.push({"Temperatura": element.Tint, "Hora": element.date.split(" ")[1]});   
+    });
+
+    $("#chartContainer").html("");
+    let svg = dimple.newSvg("#chartContainer", 1200, 300);
+    let chart = new dimple.chart(svg, data);
+    let x = chart.addCategoryAxis("x", "Hora");
+    let y = chart.addMeasureAxis("y", "Temperatura");
+
+    x.addOrderRule("Hora");
+
+    chart.addSeries(null, dimple.plot.line);
+    chart.draw();
+
+}
+
+clickDetails(1);
+
 function myFunction() {
     $("#chartContainer").html("");
     //Get data from html
@@ -12,7 +39,6 @@ function myFunction() {
     var sensores = document.getElementById("sensores").value;
 
     var svg = dimple.newSvg("#chartContainer", 700, 500);
-    //d3.csv("/data/test.csv", function (data) {
     d3.csv("/data/test.csv", function (data) {
         data = dimple.filterData(data, "Vivienda ID", [sensores]);
 

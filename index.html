@@ -27,7 +27,7 @@
 
     <section class="container-fluid">
         <div class="row">
-            <div class="col-lg-5">
+            <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="form-group row">
@@ -81,125 +81,124 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Elementos del Mapa</label>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" onclick="toogleMarkers(this);" value="1" checked="">Mostrar Marcadores
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" onclick="tooglePolygons(this);" value="1" checked="">Mostrar Marcadores
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Ver Comuna</label>
+                        <select class="form-control form-control-sm" onchange="selectCommune(this);">
+                            <option value="">- Selecciona -</option>
+                            <option value="0">Cerrillos</option>
+                            <option value="1">Cerro Navia</option>
+                            <option value="2">Conchali</option>
+                            <option value="3">El Bosque</option>
+                            <option value="4">Estacion Central</option>
+                            <option value="5">Huechuraba</option>
+                            <option value="6">Independencia</option>
+                            <option value="7">La Cisterna</option>
+                            <option value="8">La Florida</option>
+                            <option value="9">La Granja</option>
+                            <option value="10">La Pintana</option>
+                            <option value="11">La Reina</option>
+                            <option value="12">Las Condes</option>
+                            <option value="13">Lo Barnechea</option>
+                            <option value="14">Lo Espejo</option>
+                            <option value="15">Lo Prado</option>
+                            <option value="16">Macul</option>
+                            <option value="17">Maipu</option>
+                            <option value="18">Nunoa</option>
+                            <option value="19">Pedro Aguirre Cerda</option>
+                            <option value="20">Penalolen</option>
+                            <option value="21">Pirque</option>
+                            <option value="22">Providencia</option>
+                            <option value="23">Pudahuel</option>
+                            <option value="24">Puente Alto</option>
+                            <option value="25">Quilicura</option>
+                            <option value="26">Quinta Normal</option>
+                            <option value="27">Recoleta</option>
+                            <option value="28">Renca</option>
+                            <option value="29">San Bernardo</option>
+                            <option value="30">San Joaquin</option>
+                            <option value="31">San Miguel</option>
+                            <option value="32">San Ramon</option>
+                            <option value="33">Santiago</option>
+                            <option value="34">Vitacura</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" onclick="viewCity();">Vista Ciudad</button>
+                    </div>
+                </div>
+                        
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Filtro por Sensor</label><br>
+                        <label class="radio">
+                            <input type="radio" name="mapVariable" id="inlineRadio0" value="0" checked> Ninguno
+                        </label><br>
+                        <label class="radio">
+                            <input type="radio" name="mapVariable" id="inlineRadio1" value="1"> Temperatura
+                        </label><br>
+                        <label class="radio">
+                            <input type="radio" name="mapVariable" id="inlineRadio2" value="2"> Humedad
+                        </label><br>
+                        <label class="radio">
+                            <input type="radio" name="mapVariable" id="inlineRadio3" value="3"> CO2
+                        </label><br>
+                        <label class="radio">
+                            <input type="radio" name="mapVariable" id="inlineRadio4" value="4"> Ruido
+                        </label><br>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-9">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div id="map-container" class="panel-body">
+                            <div id="map"></div>
+                            <div id="scale">
+                                <ul>
+                                    <li id="scale-1"><span>1º</span></li>
+                                    <li id="scale-2"><span>3º</span></li>
+                                    <li id="scale-3"><span>6º</span></li>
+                                    <li id="scale-4"><span>8º</span></li>
+                                    <li id="scale-5"><span>12º</span></li>
+                                    <li id="scale-6"><span>18º</span></li>
+                                    <li id="scale-7"><span>21º</span></li>
+                                    <li id="scale-8"><span>24º</span></li>
+                                    <li id="scale-9"><span>28º</span></li>
+                                    <li id="scale-10"><span>32º</span></li>
+                                    <li id="scale-11"><span>34º</span></li>
+                                    <li id="scale-12"><span>36º</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div id="chartContainer"></div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-7">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Elementos del Mapa</label>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" onclick="toogleMarkers(this);" value="1" checked="">Mostrar Marcadores
-                                        </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" onclick="tooglePolygons(this);" value="1" checked="">Mostrar Marcadores
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label>Ver Comuna</label>
-                                    <select class="form-control form-control-sm" onchange="selectCommune(this);">
-                                        <option value="">- Selecciona -</option>
-                                        <option value="0">Cerrillos</option>
-                                        <option value="1">Cerro Navia</option>
-                                        <option value="2">Conchali</option>
-                                        <option value="3">El Bosque</option>
-                                        <option value="4">Estacion Central</option>
-                                        <option value="5">Huechuraba</option>
-                                        <option value="6">Independencia</option>
-                                        <option value="7">La Cisterna</option>
-                                        <option value="8">La Florida</option>
-                                        <option value="9">La Granja</option>
-                                        <option value="10">La Pintana</option>
-                                        <option value="11">La Reina</option>
-                                        <option value="12">Las Condes</option>
-                                        <option value="13">Lo Barnechea</option>
-                                        <option value="14">Lo Espejo</option>
-                                        <option value="15">Lo Prado</option>
-                                        <option value="16">Macul</option>
-                                        <option value="17">Maipu</option>
-                                        <option value="18">Nunoa</option>
-                                        <option value="19">Pedro Aguirre Cerda</option>
-                                        <option value="20">Penalolen</option>
-                                        <option value="21">Pirque</option>
-                                        <option value="22">Providencia</option>
-                                        <option value="23">Pudahuel</option>
-                                        <option value="24">Puente Alto</option>
-                                        <option value="25">Quilicura</option>
-                                        <option value="26">Quinta Normal</option>
-                                        <option value="27">Recoleta</option>
-                                        <option value="28">Renca</option>
-                                        <option value="29">San Bernardo</option>
-                                        <option value="30">San Joaquin</option>
-                                        <option value="31">San Miguel</option>
-                                        <option value="32">San Ramon</option>
-                                        <option value="33">Santiago</option>
-                                        <option value="34">Vitacura</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary" onclick="viewCity();">Vista Ciudad</button>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-md-offset-1">
-                                <div class="form-group">
-                                    <label>Filtro por Sensor</label>
-                                    <label class="radio">
-                                        <input type="radio" name="mapVariable" id="inlineRadio0" value="0" checked> Ninguno
-                                    </label>
-                                    <label class="radio">
-                                        <input type="radio" name="mapVariable" id="inlineRadio1" value="1"> Temperatura
-                                    </label>
-                                    <label class="radio">
-                                        <input type="radio" name="mapVariable" id="inlineRadio2" value="2"> Humedad
-                                    </label>
-                                    <label class="radio">
-                                        <input type="radio" name="mapVariable" id="inlineRadio3" value="3"> CO2
-                                    </label>
-                                    <label class="radio">
-                                        <input type="radio" name="mapVariable" id="inlineRadio4" value="4"> Ruido
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div id="map-container" class="panel-body">
-                                <div id="map"></div>
-                                <div id="scale">
-                                    <ul>
-                                        <li id="scale-1"><span>1º</span></li>
-                                        <li id="scale-2"><span>3º</span></li>
-                                        <li id="scale-3"><span>6º</span></li>
-                                        <li id="scale-4"><span>8º</span></li>
-                                        <li id="scale-5"><span>12º</span></li>
-                                        <li id="scale-6"><span>18º</span></li>
-                                        <li id="scale-7"><span>21º</span></li>
-                                        <li id="scale-8"><span>24º</span></li>
-                                        <li id="scale-9"><span>28º</span></li>
-                                        <li id="scale-10"><span>32º</span></li>
-                                        <li id="scale-11"><span>34º</span></li>
-                                        <li id="scale-12"><span>36º</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
             </div>
 
         </div> <!-- End row -->
@@ -213,8 +212,8 @@
     <script src="dimple/lib/d3.v4.3.0.js"></script>
     <script src="dimple/dimple.v2.3.0.js"></script>
     <script type="text/javascript" src="generator/sensors.json"></script>
-    <script src="maps.js"></script>
     <script src="main.js"></script>
+    <script src="maps.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxbiM6_Kt4l-yrtbR0--I04LqZS-ARhL8&callback=initMap" async defer></script>
 </body>
 </html>
