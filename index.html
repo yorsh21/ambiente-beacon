@@ -28,63 +28,12 @@
     <section class="container-fluid">
         <div class="row">
             <div class="col-lg-3">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="form-group row">
-                            <label for="fecha" class="col-sm-4 col-form-label">Fecha</label>
-                            <div class="col-sm-8">
-                                <input id="fecha" class="form-control form-control-sm" name="fecha" value="13-05-2017">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="eje_x" class="col-sm-4 col-form-label">Variable eje X</label>
-                            <div class="col-sm-8">
-                                <select id="eje_x" class="form-control form-control-sm" name="eje_x" onchange="">
-                                    <option value="Hora">Hora</option>
-                                    <option value="Fecha">Fecha</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="eje_y" class="col-sm-4 col-form-label">Variable eje Y</label>
-                            <div class="col-sm-8">
-                                <select id="eje_y" class="form-control form-control-sm" name="eje_y" onchange="">
-                                    <option value="Temperatura Exterior">Temperatura Exterior</option>
-                                    <option value="Temperatura Interior">Temperatura Interior</option>
-                                    <option value="Humedad Exterior">Humedad Exterior</option>
-                                    <option value="Humedad Interior">Humedad Interior</option>
-                                    <option value="Co2">Co2</option>
-                                    <option value="Ruido">Ruido</option>
-                                    <option value="Pm10">Pm10</option>
-                                    <option value="Pm25">Pm25</option>
-                                    <option value="Potencia">Potencia</option>
-                                    <option value="Energia">Energia</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="sensores" class="col-sm-4 col-form-label">Sensores a mostrar</label>
-                            <div class="col-sm-8">
-                                <select id="sensores" class="form-control form-control-sm" name="sensores" onchange="">
-                                    <option value="11">11</option>
-                                    <option value="17">17</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="31">31</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary" onclick="myFunction()">Generar</button>
-                        </div>
-                    </div>
+                <div class="col-md-12">
+                    <img src="img/casa-sensor.png" id="casa-sensor">
                 </div>
 
                 <div class="col-md-12">
                     <div class="form-group">
-                        <label>Elementos del Mapa</label>
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" onclick="toogleMarkers(this);" value="1" checked="">Mostrar Marcadores
@@ -96,7 +45,7 @@
                             </label>
                         </div>
                     </div>
-                </div>
+                </div><br>
                         
                 <div class="col-md-12">
                     <div class="form-group">
@@ -143,7 +92,7 @@
                     <div class="form-group">
                         <button type="button" class="btn btn-primary" onclick="viewCity();">Vista Ciudad</button>
                     </div>
-                </div>
+                </div><br>
                         
                 <div class="col-md-12">
                     <div class="form-group">
@@ -166,37 +115,88 @@
                     </div>
                 </div>
 
+                <br><br><br>
+
+                <div class="col-md-12" id="filter-graph">
+                    <div class="form-group row">
+                        <label for="fecha" class="col-sm-5 col-form-label">Fecha</label>
+                        <div class="col-sm-7">
+                            <input id="fecha" class="form-control form-control-sm" name="fecha" value="13-05-2017">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="eje_x" class="col-sm-5 col-form-label">Variable eje X</label>
+                        <div class="col-sm-7">
+                            <select id="eje_x" class="form-control form-control-sm" name="eje_x" onchange="">
+                                <option value="Hora">Minutos</option>
+                                <option value="Fecha">Horas</option>
+                                <option value="Fecha">Días</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="eje_y" class="col-sm-5 col-form-label">Variable eje Y</label>
+                        <div class="col-sm-7">
+                            <select id="eje_y" class="form-control form-control-sm" name="eje_y" onchange="">
+                                <option value="Temperatura Exterior">Temperatura Exterior</option>
+                                <option value="Temperatura Interior">Temperatura Interior</option>
+                                <option value="Humedad Exterior">Humedad Exterior</option>
+                                <option value="Humedad Interior">Humedad Interior</option>
+                                <option value="Co2">Co2</option>
+                                <option value="Ruido">Ruido</option>
+                                <option value="Pm10">Pm10</option>
+                                <option value="Pm25">Pm25</option>
+                                <option value="Potencia">Potencia</option>
+                                <option value="Energia">Energia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="sensores" class="col-sm-5 col-form-label">Sensores a mostrar</label>
+                        <div class="col-sm-7">
+                            <select id="sensores" class="form-control form-control-sm" name="sensores" onchange="">
+                                <option value="11">11</option>
+                                <option value="17">17</option>
+                                <option value="23">23</option>
+                                <option value="24">24</option>
+                                <option value="27">27</option>
+                                <option value="28">28</option>
+                                <option value="31">31</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--<div class="form-group">
+                        <button class="btn btn-primary" onclick="myFunction()">Generar</button>
+                    </div>-->
+                </div>
+
+                <br><br><br>
+
             </div>
 
             <div class="col-lg-9">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div id="map-container" class="panel-body">
-                            <div id="map"></div>
-                            <div id="scale">
-                                <ul>
-                                    <li id="scale-1"><span>1º</span></li>
-                                    <li id="scale-2"><span>3º</span></li>
-                                    <li id="scale-3"><span>6º</span></li>
-                                    <li id="scale-4"><span>8º</span></li>
-                                    <li id="scale-5"><span>12º</span></li>
-                                    <li id="scale-6"><span>18º</span></li>
-                                    <li id="scale-7"><span>21º</span></li>
-                                    <li id="scale-8"><span>24º</span></li>
-                                    <li id="scale-9"><span>28º</span></li>
-                                    <li id="scale-10"><span>32º</span></li>
-                                    <li id="scale-11"><span>34º</span></li>
-                                    <li id="scale-12"><span>36º</span></li>
-                                </ul>
-                            </div>
-                        </div>
+                <div class="col-md-12" id="map-container">
+                    <div id="map"></div>
+                    <div id="scale">
+                        <ul>
+                            <li id="scale-1"><span>1º</span></li>
+                            <li id="scale-2"><span>3º</span></li>
+                            <li id="scale-3"><span>6º</span></li>
+                            <li id="scale-4"><span>8º</span></li>
+                            <li id="scale-5"><span>12º</span></li>
+                            <li id="scale-6"><span>18º</span></li>
+                            <li id="scale-7"><span>21º</span></li>
+                            <li id="scale-8"><span>24º</span></li>
+                            <li id="scale-9"><span>28º</span></li>
+                            <li id="scale-10"><span>32º</span></li>
+                            <li id="scale-11"><span>34º</span></li>
+                            <li id="scale-12"><span>36º</span></li>
+                        </ul>
                     </div>
                 </div>
 
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div id="chartContainer"></div>
-                    </div>
+                <div class="col-md-12">
+                    <div id="chartContainer"></div>
                 </div>
 
             </div>
