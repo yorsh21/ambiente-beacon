@@ -5,16 +5,18 @@ $('#fecha').datepicker({
 
 function clickDetails(obj) {
     let sensor_id = obj.getAttribute("data-sensor");
+    document.getElementById("selected_sensor_id").value = sensor_id;
+
     let commune_id = obj.getAttribute("data-commune");
     let sensor = sensors.find(e => e.id == sensor_id);
     let commune = communes[commune_id];
+
     //gm-ui-hover-effect
     
     let parent = obj.closest(".gm-style-iw").nextSibling.click();
 
     let data = [];
     sensor.data.forEach(element => {
-        //let datesplit = element[4].split("-")
         data.push({"Temperatura": element[0], "Fecha": element[4]});   
     });
 
@@ -32,49 +34,112 @@ function clickDetails(obj) {
 
 }
 
-function myFunction() {
-    $("#chartContainer").html("");
-    //Get data from html
+function loadDataSensor() {
+    let sensor_id = document.getElementById("selected_sensor_id").value;
+    let sensor = sensors.find(e => e.id == sensor_id);
+
     var fecha = document.getElementById("fecha").value;
-    var eje_x = document.getElementById("eje_x").value;
     var eje_y = document.getElementById("eje_y").value;
-    var sensores = document.getElementById("sensores").value;
 
-    var svg = dimple.newSvg("#chartContainer", 700, 500);
-    d3.csv("/data/test.csv", function (data) {
-        data = dimple.filterData(data, "Vivienda ID", [sensores]);
+    let data = [];
+    let text_eje_y;
+    
+    switch(eje_y){
+        case "Temperatura Exterior":
+            text_eje_y = "Temperatura";
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Temperatura": element.Text, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            break;
+        case "Temperatura Interior":
+            text_eje_y = "Temperatura";
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Temperatura": element.Tint, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            break;
+        case "Humedad Exterior":
+            text_eje_y = "Humedad";
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Humedad": element.Hext, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            break;
+        case "Humedad Interior":
+            text_eje_y = "Humedad";
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Humedad": element.Hint, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            break;
+        case "Co2":
+            sensor.data.forEach(element => {
+                
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Co2": element.Co2, "Hora": element.date.split(" ")[1]}); 
+                }  
+            });
+            text_eje_y = "Co2";
+            break;
+        case "Ruido":
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Ruido": element.Ruid, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            text_eje_y = "Ruido";
+            break;
+        case "Pm10":
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Pm10": element.Pm10, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            text_eje_y = "Humedad";
+            break;
+        case "Pm25":
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Pm25": element.Pm25, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            text_eje_y = "Pm25";
+            break;
+        case "Potencia":
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Potencia": element.Powr, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            text_eje_y = "Potencia";
+            break;
+        case "Energia": default:
+            sensor.data.forEach(element => {
+                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
+                    data.push({"Energia": element.Egy, "Hora": element.date.split(" ")[1]});   
+                }
+            });
+            text_eje_y = "Energia";
+            break;
+    }
+    
 
-        // Formatting Data
-        data.forEach(function(d) {
-            d["Vivienda ID"] = parseInt(d["Vivienda ID"]);
-            d["Temperatura Interior"] = parseInt(d["Humedad Interior"]) - 60;
-            d["Temperatura Exterior"] = parseInt(d["Humedad Exterior"]) - 60;
-            d["Humedad Interior"] = parseInt(d["Humedad Interior"]);
-            d["Humedad Exterior"] = parseInt(d["Humedad Exterior"]);
-            d["Co2"] = parseFloat(d["Co2"]);
-            d["Ruido"] = parseFloat(d["Ruido"]);
-            d["Pm10"] = parseFloat(d["Pm10"]);
-            d["Pm25"] = parseFloat(d["Pm25"]);
-            d["Potencia"] = parseFloat(d["Potencia"]);
-            d["Energia"] = parseFloat(d["Energia"]);
+    $("#filter-graph").css("display", "block");
+    $("#chartContainer").html("");
+    let svg = dimple.newSvg("#chartContainer", 1200, 300);
+    let chart = new dimple.chart(svg, data);
+    let x = chart.addCategoryAxis("x", "Hora");
 
-            var  splitted_date = d["Measured At"].split(" ");
-            var fecha = splitted_date[0];
-            var hora = splitted_date[1];
-            d["Fecha"] = fecha;
-            d["Hora"] = hora;
-            delete d["Measured At"];
-        });
 
-        //Plotting
-        data = dimple.filterData(data, "Fecha", [fecha]);
-        var myChart = new dimple.chart(svg, data);
-        myChart.setBounds(60, 30, 505, 305);
-        var x = myChart.addCategoryAxis("x", eje_x);
-        x.addOrderRule("Hora");
-        var y1 = myChart.addMeasureAxis("y", eje_y);
-        var temp_ext = myChart.addSeries("Vivienda ID", dimple.plot.line);
-        myChart.addLegend(60, 10, 500, 20, "right", [temp_ext]);
-        myChart.draw();
-    });
+    let y = chart.addMeasureAxis("y", text_eje_y);
+
+    x.addOrderRule("Hora");
+
+    chart.addSeries(null, dimple.plot.line);
+    chart.draw();
 }
