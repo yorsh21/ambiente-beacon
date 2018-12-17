@@ -2521,7 +2521,7 @@ $('input[name="mapVariable"]').change(function(opt){
         let gradientSort = gradients[val-1].sort();
         $("#scale > ul > li").each(function() {
             $("#scale").css("display", "block");
-            $(this).css("background-color", variableColorCode(gradientSort[contador])[val-1]);
+            $(this).css("background-color", variableColorCode(gradientSort[contador]/0.7)[val-1]);
             let value = parseInt(gradientSort[contador]*maximos[val-1] + minimos[val-1] - 2).toString() + units[val-1]
             $(this).text(value)
             contador += 3

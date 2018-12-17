@@ -1,7 +1,9 @@
-$('#fecha').datepicker({
+/*$('#fecha').datepicker({
     uiLibrary: 'bootstrap4',
-    format: 'dd-mm-yyyy'
-});
+    format: 'dd-mm-yyyy',
+    startView: "months",
+    minViewMode: "months"
+});*/
 
 function clickDetails(obj) {
     let sensor_id = obj.getAttribute("data-sensor");
@@ -22,7 +24,7 @@ function clickDetails(obj) {
 
     $("#filter-graph").css("display", "block");
     $("#chartContainer").html("");
-    let svg = dimple.newSvg("#chartContainer", 1200, 400);
+    let svg = dimple.newSvg("#chartContainer", 1200, 300);
     let chart = new dimple.chart(svg, data);
     let x = chart.addCategoryAxis("x", "Fecha");
     let y = chart.addMeasureAxis("y", "Temperatura");
@@ -40,91 +42,55 @@ function loadDataSensor() {
 
     var fecha = document.getElementById("fecha").value;
     var eje_y = document.getElementById("eje_y").value;
+    
 
     let data = [];
     let text_eje_y;
     
     switch(eje_y){
-        case "Temperatura Exterior":
+        case "Temperatura":
+            sensor.data.forEach(element => {
+                if(fecha == "00") {
+                    data.push({"Temperatura": element[0], "Fecha": element[4]});
+                }
+                else if(element[4].split('-')[1] == fecha) {
+                    data.push({"Temperatura": element[0], "Fecha": element[4].split('-')[2]});   
+                }
+            });
             text_eje_y = "Temperatura";
+            break;
+        case "Humedad":
             sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Temperatura": element.Text, "Hora": element.date.split(" ")[1]});   
+                if(fecha == "00") {
+                    data.push({"Humedad": element[1], "Fecha": element[4]});
+                }
+                else if(element[4].split('-')[1] == fecha) {
+                    data.push({"Humedad": element[1], "Fecha": element[4].split('-')[2]});   
                 }
             });
-            break;
-        case "Temperatura Interior":
-            text_eje_y = "Temperatura";
-            sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Temperatura": element.Tint, "Hora": element.date.split(" ")[1]});   
-                }
-            });
-            break;
-        case "Humedad Exterior":
             text_eje_y = "Humedad";
-            sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Humedad": element.Hext, "Hora": element.date.split(" ")[1]});   
-                }
-            });
-            break;
-        case "Humedad Interior":
-            text_eje_y = "Humedad";
-            sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Humedad": element.Hint, "Hora": element.date.split(" ")[1]});   
-                }
-            });
             break;
         case "Co2":
             sensor.data.forEach(element => {
-                
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Co2": element.Co2, "Hora": element.date.split(" ")[1]}); 
+                if(fecha == "00") {
+                    data.push({"Co2": element[2], "Fecha": element[4]});
+                }
+                else if(element[4].split('-')[1] == fecha) {
+                    data.push({"Co2": element[2], "Fecha": element[4].split('-')[2]}); 
                 }  
             });
             text_eje_y = "Co2";
             break;
-        case "Ruido":
+        case "Ruido": default:
             sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Ruido": element.Ruid, "Hora": element.date.split(" ")[1]});   
+                if(fecha == "00") {
+                    data.push({"Ruido": element[3], "Fecha": element[4]});
+                }
+                else if(element[4].split('-')[1] == fecha) {
+                    data.push({"Ruido": element[3], "Fecha": element[4].split('-')[2]});   
                 }
             });
             text_eje_y = "Ruido";
-            break;
-        case "Pm10":
-            sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Pm10": element.Pm10, "Hora": element.date.split(" ")[1]});   
-                }
-            });
-            text_eje_y = "Humedad";
-            break;
-        case "Pm25":
-            sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Pm25": element.Pm25, "Hora": element.date.split(" ")[1]});   
-                }
-            });
-            text_eje_y = "Pm25";
-            break;
-        case "Potencia":
-            sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Potencia": element.Powr, "Hora": element.date.split(" ")[1]});   
-                }
-            });
-            text_eje_y = "Potencia";
-            break;
-        case "Energia": default:
-            sensor.data.forEach(element => {
-                if(element.date.split(" ")[0] == fecha && element.date.split(" ")[1].split(":")[1] == "00") {
-                    data.push({"Energia": element.Egy, "Hora": element.date.split(" ")[1]});   
-                }
-            });
-            text_eje_y = "Energia";
             break;
     }
     
@@ -133,12 +99,10 @@ function loadDataSensor() {
     $("#chartContainer").html("");
     let svg = dimple.newSvg("#chartContainer", 1200, 300);
     let chart = new dimple.chart(svg, data);
-    let x = chart.addCategoryAxis("x", "Hora");
-
-
+    let x = chart.addCategoryAxis("x", "Fecha");
     let y = chart.addMeasureAxis("y", text_eje_y);
 
-    x.addOrderRule("Hora");
+    x.addOrderRule("Fecha");
 
     chart.addSeries(null, dimple.plot.line);
     chart.draw();

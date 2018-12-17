@@ -23,7 +23,7 @@
         <ul id="nav-sensors" class="nav navbar-top-links navbar-right"><img src="img/sensores-dark.png" alt=""></ul>
     </nav>
 
-    <br><br>
+    <br>
 
     <section class="container-fluid">
         <div class="row">
@@ -119,12 +119,12 @@
 
                 <div class="col-md-12" id="filter-graph">
                     <input id="selected_sensor_id" type="hidden">
-                    <div class="form-group row">
+                    <!--<div class="form-group row">
                         <label for="fecha" class="col-sm-5 col-form-label">Fecha</label>
                         <div class="col-sm-7">
                             <input onchange="loadDataSensor()" id="fecha" class="form-control form-control-sm" name="fecha" value="13-05-2017">
                         </div>
-                    </div>
+                    </div>-->
                     <!--<div class="form-group row">
                         <label for="eje_x" class="col-sm-5 col-form-label">Variable eje X</label>
                         <div class="col-sm-7">
@@ -136,19 +136,33 @@
                         </div>
                     </div>-->
                     <div class="form-group row">
+                        <label for="fecha" class="col-sm-5 col-form-label">Fecha</label>
+                        <div class="col-sm-7">
+                            <select onchange="loadDataSensor()" name="fecha" id="fecha" class="form-control form-control-sm">
+                                <option value="00">General</option>
+                                <option value="01">Enero</option>
+                                <option value="02">Febrero</option>
+                                <option value="03">Marzo</option>
+                                <option value="04">Abril</option>
+                                <option value="05">Mayo</option>
+                                <option value="06">Junio</option>
+                                <option value="07">Julio</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Septiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <label for="eje_y" class="col-sm-5 col-form-label">Variable eje Y</label>
                         <div class="col-sm-7">
                             <select onchange="loadDataSensor()" id="eje_y" class="form-control form-control-sm" name="eje_y" onchange="">
-                                <option value="Temperatura Exterior">Temperatura Exterior</option>
-                                <option value="Temperatura Interior">Temperatura Interior</option>
-                                <option value="Humedad Exterior">Humedad Exterior</option>
-                                <option value="Humedad Interior">Humedad Interior</option>
+                                <option value="Temperatura">Temperatura</option>
+                                <option value="Humedad">Humedad</option>
                                 <option value="Co2">Co2</option>
                                 <option value="Ruido">Ruido</option>
-                                <option value="Pm10">Pm10</option>
-                                <option value="Pm25">Pm25</option>
-                                <option value="Potencia">Potencia</option>
-                                <option value="Energia">Energia</option>
                             </select>
                         </div>
                     </div>
@@ -180,27 +194,91 @@
                     <div id="map"></div>
                     <div id="scale">
                         <ul>
-                            <li id="scale-1"><span>10º</span></li>
-                            <li id="scale-2"><span>13º</span></li>
-                            <li id="scale-3"><span>16º</span></li>
-                            <li id="scale-4"><span>19º</span></li>
-                            <li id="scale-5"><span>21º</span></li>
-                            <li id="scale-6"><span>24º</span></li>
-                            <li id="scale-7"><span>37º</span></li>
-                            <li id="scale-8"><span>30º</span></li>
-                            <li id="scale-9"><span>33º</span></li>
-                            <li id="scale-10"><span>36º</span></li>
+                            <li id="scale-1"><span></span></li>
+                            <li id="scale-2"><span></span></li>
+                            <li id="scale-3"><span></span></li>
+                            <li id="scale-4"><span></span></li>
+                            <li id="scale-5"><span></span></li>
+                            <li id="scale-6"><span></span></li>
+                            <li id="scale-7"><span></span></li>
+                            <li id="scale-8"><span></span></li>
+                            <li id="scale-9"><span></span></li>
+                            <li id="scale-10"><span></span></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="col-md-12">
+                <div id="wrapp-chart" class="col-md-12">
                     <div id="chartContainer"></div>
                 </div>
 
             </div>
 
         </div> <!-- End row -->
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                      <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Temperatura
+                          </button>
+                        </h5>
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img src="img/temperatura.jpg" alt="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Humedad
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img src="img/humedad.jpg" alt="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            CO2
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                            <img src="img/co2.jpg" alt="">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                          <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                              Ruido
+                            </button>
+                          </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                          <div class="card-body">
+                              <img src="img/ruido.jpg" alt="">
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
     </section> <!-- End container -->
 
 

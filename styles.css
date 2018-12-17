@@ -63,9 +63,10 @@ body {
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 50px;
+    width: 70px;
     height: 240px;
     background-color: white;
+    font-weight: bold;
     display: none;
 }
 
@@ -79,4 +80,8 @@ body {
 
 #scale > ul > li > span {
     font-weight: bold;
+}
+
+#wrapp-chart {
+    height: 350px;
 }
