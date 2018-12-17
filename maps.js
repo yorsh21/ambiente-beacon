@@ -2441,14 +2441,15 @@ let communeColors = [
     '#52a7ff'
 ];
 
+let measures = ["Text", "Hext", "Co2", "Ruid"];
 let variableColor = ['white','red','blue','black','green'];
+let units = [" ºC", " %", " ppm", " db"];
 
 let variableColorCode = gradient => [
-    `rgba(0,0,0,$(gradient))`,
-    `rgba(255,0,0,$(gradient))`,
-    `rgba(0,0,255,$(gradient))`,
-    `rgba(0,0,0,$(gradient))`,
-    `rgba(0,128,0,$(gradient))`
+    "rgba(255,0,0," + gradient + ")",
+    "rgba(0,0,255," + gradient + ")",
+    "rgba(0,0,0," + gradient + ")",
+    "rgba(0,128,0," + gradient + ")"
 ];
 
 let loadFilters = true;
@@ -2458,9 +2459,6 @@ let minimos = []
 $("#filter-area").mouseover(function() {
     if(loadFilters) {
         loadFilters = false;
-
-        let measuresFULL = ["Tint", "Text", "Hint", "Hext", "Co2", "Ruid", "Pm10", "Pm25", "Powr", "Egy"];
-        let measures = ["Text", "Hext", "Co2", "Ruid"];
 
         sensors.forEach(s => {
             s.data.forEach(d => {
@@ -2520,11 +2518,12 @@ $('input[name="mapVariable"]').change(function(opt){
         }
 
         let contador = 0;
-        //let communeSort = communeData[val].sort();
+        let gradientSort = gradients[val-1].sort();
         $("#scale > ul > li").each(function() {
             $("#scale").css("display", "block");
-            console.log(gradients[val-1][contador])
-            $(this).css("background-color", variableColorCode(gradients[val-1][contador]));
+            $(this).css("background-color", variableColorCode(gradientSort[contador])[val-1]);
+            let value = parseInt(gradientSort[contador]*maximos[val-1] + minimos[val-1] - 2).toString() + units[val-1]
+            $(this).text(value)
             contador += 3
         })
     }
