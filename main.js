@@ -14,7 +14,7 @@ function clickDetails(obj) {
 
     let data = [];
     sensor.data.forEach(element => {
-        data.push({"Temperatura": element.Text, "Hora": element.date.split(" ")[1]});   
+        data.push({"Temperatura": element.Text, "Hora": element[4].split(" ")[1]});   
     });
 
     $("#filter-graph").css("display", "block");
