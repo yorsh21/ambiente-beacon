@@ -2575,8 +2575,9 @@ let contentString = `
             <div class="bodyContent">
                 <p><b>Latitud:</b> {2}</p>
                 <p><b>Longitud:</b> {3}</p>
+                <p><b>Comuna:</b> {5}</p>
                 <p><b>Última Medición:</b> {4}</p>
-                <a class="btn btn-primary" onclick="clickDetails(this)" href="#" data-id="{1}">Detalles</a>
+                <a class="btn btn-primary" onclick="clickDetails(this)" href="#" data-sensor="{1}" data-commune="{6}">Detalles</a>
             </div>
       </div>
 `;
@@ -2593,6 +2594,7 @@ function initMap() {
         let tempMarker = new google.maps.Marker({
            position: communes[i],
            map: map,
+           visible: false,
            title: 'Click para ampliar'
         });
         tempMarker.addListener('click', function() {
@@ -2609,26 +2611,49 @@ function initMap() {
             fillColor: communes[i].color,
             fillOpacity: 0.2
         });
+        
+        ["TextData", "HextData", "Co2Data", "RuidData"].forEach(d => {
+            communes[i][d] = [];
+        });
 
+        google.maps.event.addListener(tempPolygon, 'click', function(e) {
+            let position = new google.maps.LatLng(communes[i].lat, communes[i].lng);
+            map.setCenter(position);
+            map.setZoom(14);
+        });
         tempPolygon.setMap(map);
         polygons.push(tempPolygon);
    }
 
 
    for (let i = 0; i < sensors.length; i++) {
+        let position = new google.maps.LatLng(sensors[i].lat, sensors[i].lng);
         let tempMarker = new google.maps.Marker({
-            position: new google.maps.LatLng(sensors[i].lat, sensors[i].lng),
+            position: position,
             map: map,
             icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
             title: 'Sensor ' + sensors[i].id,
             visible: false
         });
 
+        let comune_name = "";
+        let comune_id = 0;
+        for (let j = 0; j < communes.length; j++) {
+            let tempPoly = new google.maps.Polygon({paths: communes[j].coords});
+            if(google.maps.geometry.poly.containsLocation(position, tempPoly)) {
+                comune_name = communes[j].name;
+                comune_id = j;
+                break;
+            }
+        }
+
+        sensors[i].commune = comune_id;
+
         let infowindow = new google.maps.InfoWindow({
             content: contentString.format(sensors[i].id, sensors[i].id, sensors[i].lat, sensors[i].lng, function() {
                 let len = sensors[i].data.length;
                 return sensors[i].data[len-1].date.split(" ")[0];
-            })
+            }, comune_name, comune_id)
         });
 
         tempMarker.addListener('click', function() {
@@ -2639,45 +2664,26 @@ function initMap() {
 
    google.maps.event.addListener(map, 'zoom_changed', function() {
        var zoom = map.getZoom();
-       for (let i = 0; i < markers.length; i++) {
+        /*for (let i = 0; i < markers.length; i++) {
            markers[i].setVisible(zoom < 14);
-       }
-       for (let j = 0; j < sensorMarkers.length; j++) {
+        }*/
+        for (let j = 0; j < sensorMarkers.length; j++) {
            sensorMarkers[j].setVisible(zoom >= 14);
-       }
+        }
    });
+
 }
 
-
-// Sets the map on all markers in the array.
-function setMapOnAllMarkers(map) {
-    for (let i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-    }
-}
-
-// Sets the map on all polygons in the array.
-function setMapOnAllPolygons(map) {
-    for (let i = 0; i < markers.length; i++) {
-        polygons[i].setMap(map);
-    }
-}
 
 function toogleMarkers(obj) {
-    if(obj.checked) {
-        setMapOnAllMarkers(map);
-    }
-    else {
-        setMapOnAllMarkers(null);
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].setVisible(obj.checked);
     }
 }
 
 function tooglePolygons(obj) {
-    if(obj.checked) {
-        setMapOnAllPolygons(map);
-    }
-    else {
-        setMapOnAllPolygons(null);
+    for (let i = 0; i < markers.length; i++) {
+        polygons[i].setVisible(obj.checked);
     }
 }
 
@@ -2733,231 +2739,91 @@ let communeColors = [
 ];
 
 let variableColor = [
-    'black',
-    'green',
+    'white',
+    'red',
     'blue',
     'black',
-    'red'
+    'green'
 ];
 
-let variableColorCode = [
-    'rgba(0,0,0,',
-    'rgba(0,128,0,',
-    'rgba(0,0,255,',
-    'rgba(0,0,0,',
-    'rgba(255,0,0,'
+let variableColorCode = gradient => [
+    `rgba(0,0,0,$(gradient))`,
+    `rgba(255,0,0,$(gradient))`,
+    `rgba(0,0,255,$(gradient))`,
+    `rgba(0,0,0,$(gradient))`,
+    `rgba(0,128,0,$(gradient))`
 ];
 
-let communeData = [
-    [
-      0.3395333554466822,
-      0.16111489055391548,
-      0.6628932629495967,
-      0.46500418636663876,
-      0.20456962494088526,
-      0.6459389810116669,
-      0.5836140085475019,
-      0.05711973909284085,
-      0.10652585121711744,
-      0.7536539856816056,
-      0.33694157728882157,
-      0.0644523429459567,
-      0.1829227667338662,
-      0.5207849831670104,
-      0.3925508163836169,
-      0.19662218952077337,
-      0.3574690325288088,
-      0.7990166652242499,
-      0.06686244611514414,
-      0.35542629770250844,
-      0.25412635075169554,
-      0.08404818863579222,
-      0.7601593638256674,
-      0.46438274078501696,
-      0.7985484713909741,
-      0.4214135384670299,
-      0.7274072445466648,
-      0.2443276279944766,
-      0.22942945664968883,
-      0.16178266046357148,
-      0.48943121219866104,
-      0.7174921747704412,
-      0.17689621028741764,
-      0.6986733981566724,
-      0.9707403898315792
-    ],
-    [
-      0.46494064602175933,
-      0.7750352360025936,
-      0.8102896806518753,
-      0.802454205923574,
-      0.08285857173983979,
-      0.6063554081085643,
-      0.25698116141662997,
-      0.5849291800358778,
-      0.7972629579530879,
-      0.48953463837850064,
-      0.3757828899489857,
-      0.17627194094044096,
-      0.7040173145024344,
-      0.9508548776304473,
-      0.9584760255628668,
-      0.43204682207581824,
-      0.6606158255512709,
-      0.9005045509303016,
-      0.4688730504860177,
-      0.3359860369545866,
-      0.02391147948777972,
-      0.7782234965833517,
-      0.4804544159918114,
-      0.7383452632624035,
-      0.5931237536671925,
-      0.8842109487984422,
-      0.5037949300357143,
-      0.9361871460407984,
-      0.5343126219980714,
-      0.1887798809569572,
-      0.7394954007046781,
-      0.40722299814638974,
-      0.1738802775512327,
-      0.6976532841812919,
-      0.10717339342001742
-    ],
-    [
-      0.6235115556627986,
-      0.5030828717361955,
-      0.9172601670538252,
-      0.8611865867295108,
-      0.7763334921298235,
-      0.7784177171088451,
-      0.6378686270738692,
-      0.6388299101757642,
-      0.22657218857391714,
-      0.4519972943144137,
-      0.0830102086142559,
-      0.1212372209196455,
-      0.4331789418260481,
-      0.6451046917597951,
-      0.5421581672516669,
-      0.15348431475694935,
-      0.8223391433691758,
-      0.39524980190501435,
-      0.036799491688463304,
-      0.5334849504086525,
-      0.4557812308852356,
-      0.9905603037068245,
-      0.2192249677736764,
-      0.010186271576992256,
-      0.3004137867097767,
-      0.1332844075893065,
-      0.8349857330150774,
-      0.9324311331718225,
-      0.29906042522120035,
-      0.8660986993298367,
-      0.4236234284101146,
-      0.5730339318455557,
-      0.5548089425812321,
-      0.9963775917079047,
-      0.18597713380336245
-    ],
-    [
-      0.07709921607661063,
-      0.02877582093751152,
-      0.2682568662617437,
-      0.5265676121618081,
-      0.31824337777025447,
-      0.18261559215293022,
-      0.1030491888666929,
-      0.6493011421315922,
-      0.5401103487544272,
-      0.05871816765430293,
-      0.08088404546887151,
-      0.0002770383497308071,
-      0.1823753994054591,
-      0.330829990413924,
-      0.08035709690169601,
-      0.49366715697158337,
-      0.499331463692706,
-      0.2001315087859068,
-      0.44701282330290204,
-      0.9663237496359192,
-      0.09918908382573699,
-      0.5235465037207989,
-      0.943187539018016,
-      0.4306295044107893,
-      0.8471410771429251,
-      0.21628107799394436,
-      0.862685739607024,
-      0.7652502259318714,
-      0.6448688235773039,
-      0.08895925351162282,
-      0.4578031304270733,
-      0.9793857747462016,
-      0.20882430004223895,
-      0.0575391722796641,
-      0.9744983458795224
-    ],
-    [
-      0.3533247925937437,
-      0.9966264578441053,
-      0.23552029113244832,
-      0.7176534541778348,
-      0.5584811947883923,
-      0.18763044933614537,
-      0.5079553867845772,
-      0.5111123092281273,
-      0.9810879289339143,
-      0.8079557217520565,
-      0.7446419196689658,
-      0.4752774881423445,
-      0.5805964890009472,
-      0.579121913817386,
-      0.7826329805406924,
-      0.3436701197061287,
-      0.1898318103662351,
-      0.6214911659967266,
-      0.5077809361522605,
-      0.3678287884875444,
-      0.9467877072501947,
-      0.8413031384724847,
-      0.5055857152827818,
-      0.28489129253206147,
-      0.46245630989873265,
-      0.8330480329467516,
-      0.4240578171217102,
-      0.7861043289696319,
-      0.26720567417746,
-      0.338227594359372,
-      0.5136225716138865,
-      0.5624010057284692,
-      0.7642542298107913,
-      0.01818307595124602,
-      0.024014150219437758
-    ]
-  ];
+let loadFilters = true;
+let gradients = [];
+$("#filter-area").mouseover(function() {
+    if(loadFilters) {
+        loadFilters = false;
 
-$('input[name="mapVariable"]').change(function(opt){
-    fillPolygonColor($(this).val());
+        let measuresFULL = ["Tint", "Text", "Hint", "Hext", "Co2", "Ruid", "Pm10", "Pm25", "Powr", "Egy"];
+        let measures = ["Text", "Hext", "Co2", "Ruid"];
+
+        sensors.forEach(s => {
+            s.data.forEach(d => {
+                measures.forEach(m => {
+                    communes[s.commune][m + "Data"].push(d[m]);
+                });
+            });
+        });
+
+        measures.forEach(m => {
+            let min = 9999;
+            let max = -9999
+            let average = 0;
+            let gradient = [];
+
+            communes.forEach(c => {
+                c[m] = c[m + "Data"].reduce((a, b) => a + b, 0) / c[m + "Data"].length;
+                if (!isNaN(c[m]) && c[m] < min) {
+                    min = c[m];
+                }
+                if (!isNaN(c[m]) && c[m] > max) {
+                    max = c[m];
+                }
+                gradient.push(c[m]);
+            });
+    
+            average = gradient.reduce((a, b) => a + b, 0) / gradient.length;
+            
+            for (let i = 0; i < gradient.length; i++) {
+                if (isNaN(gradient[i])) {
+                    gradient[i] = (average - min) / (max - min);
+                }
+                else {
+                    gradient[i] = (gradient[i] - min) / (max - min);
+                }
+            }
+            gradients.push(gradient);
+        });
+    }
 });
 
-function fillPolygonColor(val) {
+
+$('input[name="mapVariable"]').change(function(opt){
+    let val = $(this).val();
+
     if(val == 0) {
         $("#scale").css("display", "none");
-        for (let i = 0; i < markers.length; i++) {
+        for (let i = 0; i < polygons.length; i++) {
             polygons[i].setOptions({fillColor: communeColors[i], strokeColor: communeColors[i], fillOpacity: 0.2});
         }
-    } else{
-        
-        for (let i = 0; i < markers.length; i++) {
-            polygons[i].setOptions({fillColor: variableColor[val], strokeColor: variableColor[val], fillOpacity: communeData[val][i]});
+    } 
+    else {
+        for (let i = 0; i < polygons.length; i++) {
+            polygons[i].setOptions({fillColor: variableColor[val], strokeColor: variableColor[val], fillOpacity: gradients[val-1][i]});
         }
 
-        let contador = 0;
-        let communeSort = communeData[val].sort();
+        /*let contador = 0;
+        //let communeSort = communeData[val].sort();
         $("#scale > ul > li").each(function() {
             $("#scale").css("display", "block");
-            $(this).css("background-color", variableColorCode[val] + communeData[val][contador].toString() + ")");
+            $(this).css("background-color", variableColorCode(communeData[val][contador])[val]);
             contador += 3
-        })
+        })*/
     }
-}
+});

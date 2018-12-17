@@ -36,7 +36,7 @@
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" onclick="toogleMarkers(this);" value="1" checked="">Mostrar Marcadores
+                                <input type="checkbox" onclick="toogleMarkers(this);" value="0">Mostrar Marcadores
                             </label>
                         </div>
                         <div class="checkbox">
@@ -94,7 +94,7 @@
                     </div>
                 </div><br>
                         
-                <div class="col-md-12">
+                <div class="col-md-12" id="filter-area">
                     <div class="form-group">
                         <label>Filtro por Sensor</label><br>
                         <label class="radio">
@@ -214,6 +214,6 @@
     <script type="text/javascript" src="generator/sensors.json"></script>
     <script src="main.js"></script>
     <script src="maps.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxbiM6_Kt4l-yrtbR0--I04LqZS-ARhL8&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxbiM6_Kt4l-yrtbR0--I04LqZS-ARhL8&callback=initMap&libraries=geometry" async defer></script>
 </body>
 </html>

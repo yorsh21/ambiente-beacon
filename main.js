@@ -4,10 +4,12 @@ $('#fecha').datepicker({
 });
 
 function clickDetails(obj) {
-    let id = obj.getAttribute("data-id");
-    let sensor = sensors[id];
+    let sensor_id = obj.getAttribute("data-sensor");
+    let commune_id = obj.getAttribute("data-commune");
+    let sensor = sensors.find(e => e.id == sensor_id);
+    let commune = communes[commune_id];
     //gm-ui-hover-effect
-
+    
     let parent = obj.closest(".gm-style-iw").nextSibling.click();
 
     let data = [];
@@ -28,8 +30,6 @@ function clickDetails(obj) {
     chart.draw();
 
 }
-
-clickDetails(1);
 
 function myFunction() {
     $("#chartContainer").html("");
