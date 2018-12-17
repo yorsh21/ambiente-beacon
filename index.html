@@ -118,13 +118,14 @@
                 <br><br><br>
 
                 <div class="col-md-12" id="filter-graph">
+                    <input id="selected_sensor_id" type="hidden">
                     <div class="form-group row">
                         <label for="fecha" class="col-sm-5 col-form-label">Fecha</label>
                         <div class="col-sm-7">
-                            <input id="fecha" class="form-control form-control-sm" name="fecha" value="13-05-2017">
+                            <input onchange="loadDataSensor()" id="fecha" class="form-control form-control-sm" name="fecha" value="13-05-2017">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <!--<div class="form-group row">
                         <label for="eje_x" class="col-sm-5 col-form-label">Variable eje X</label>
                         <div class="col-sm-7">
                             <select id="eje_x" class="form-control form-control-sm" name="eje_x" onchange="">
@@ -133,11 +134,11 @@
                                 <option value="Fecha">Días</option>
                             </select>
                         </div>
-                    </div>
+                    </div>-->
                     <div class="form-group row">
                         <label for="eje_y" class="col-sm-5 col-form-label">Variable eje Y</label>
                         <div class="col-sm-7">
-                            <select id="eje_y" class="form-control form-control-sm" name="eje_y" onchange="">
+                            <select onchange="loadDataSensor()" id="eje_y" class="form-control form-control-sm" name="eje_y" onchange="">
                                 <option value="Temperatura Exterior">Temperatura Exterior</option>
                                 <option value="Temperatura Interior">Temperatura Interior</option>
                                 <option value="Humedad Exterior">Humedad Exterior</option>
@@ -151,7 +152,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <!--<div class="form-group row">
                         <label for="sensores" class="col-sm-5 col-form-label">Sensores a mostrar</label>
                         <div class="col-sm-7">
                             <select id="sensores" class="form-control form-control-sm" name="sensores" onchange="">
@@ -164,7 +165,7 @@
                                 <option value="31">31</option>
                             </select>
                         </div>
-                    </div>
+                    </div>-->
                     <!--<div class="form-group">
                         <button class="btn btn-primary" onclick="myFunction()">Generar</button>
                     </div>-->
