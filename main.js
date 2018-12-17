@@ -14,17 +14,18 @@ function clickDetails(obj) {
 
     let data = [];
     sensor.data.forEach(element => {
-        data.push({"Temperatura": element.Text, "Hora": element[4].split(" ")[1]});   
+        //let datesplit = element[4].split("-")
+        data.push({"Temperatura": element[0], "Fecha": element[4]});   
     });
 
     $("#filter-graph").css("display", "block");
     $("#chartContainer").html("");
-    let svg = dimple.newSvg("#chartContainer", 1200, 300);
+    let svg = dimple.newSvg("#chartContainer", 1200, 400);
     let chart = new dimple.chart(svg, data);
-    let x = chart.addCategoryAxis("x", "Hora");
+    let x = chart.addCategoryAxis("x", "Fecha");
     let y = chart.addMeasureAxis("y", "Temperatura");
 
-    x.addOrderRule("Hora");
+    x.addOrderRule("Fecha");
 
     chart.addSeries(null, dimple.plot.line);
     chart.draw();

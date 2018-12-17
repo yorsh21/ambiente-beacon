@@ -2453,6 +2453,8 @@ let variableColorCode = gradient => [
 
 let loadFilters = true;
 let gradients = [];
+let maximos = []
+let minimos = []
 $("#filter-area").mouseover(function() {
     if(loadFilters) {
         loadFilters = false;
@@ -2489,13 +2491,15 @@ $("#filter-area").mouseover(function() {
             
             for (let i = 0; i < gradient.length; i++) {
                 if (isNaN(gradient[i])) {
-                    gradient[i] = (average - min) / (max - min);
+                    gradient[i] = ((average - min) / (max - min))*0.7;
                 }
                 else {
-                    gradient[i] = (gradient[i] - min) / (max - min);
+                    gradient[i] = ((gradient[i] - min) / (max - min))*0.7;
                 }
             }
             gradients.push(gradient);
+            maximos.push(max);
+            minimos.push(min);
         });
     }
 });
@@ -2515,12 +2519,13 @@ $('input[name="mapVariable"]').change(function(opt){
             polygons[i].setOptions({fillColor: variableColor[val], strokeColor: variableColor[val], fillOpacity: gradients[val-1][i]});
         }
 
-        /*let contador = 0;
+        let contador = 0;
         //let communeSort = communeData[val].sort();
         $("#scale > ul > li").each(function() {
             $("#scale").css("display", "block");
-            $(this).css("background-color", variableColorCode(communeData[val][contador])[val]);
+            console.log(gradients[val-1][contador])
+            $(this).css("background-color", variableColorCode(gradients[val-1][contador]));
             contador += 3
-        })*/
+        })
     }
 });
