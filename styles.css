@@ -36,7 +36,7 @@ body {
     display: none;
 }
 
-#filter-graph {
+#filter-graph, #filter-graph2 {
     display: none;
 }
 
@@ -83,5 +83,5 @@ body {
 }
 
 #wrapp-chart {
-    height: 350px;
+    height: 450px;
 }

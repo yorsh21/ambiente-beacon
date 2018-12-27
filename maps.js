@@ -2320,6 +2320,7 @@ function initMap() {
             let position = new google.maps.LatLng(communes[i].lat, communes[i].lng);
             map.setCenter(position);
             map.setZoom(14);
+            loadDataCommune(i);
         });
         tempPolygon.setMap(map);
         polygons.push(tempPolygon);
@@ -2374,7 +2375,6 @@ function initMap() {
            sensorMarkers[j].setVisible(zoom >= 14);
         }
    });
-
 }
 
 
